@@ -1,0 +1,133 @@
+$logo_timer: 40s;
+
+@keyframes first {
+    //sep
+    26%{
+        transform: translateY(0px) rotateX(0) translateZ(0);
+    }
+    29%{
+        transform: translateY(100px) rotateX(-90deg) translateZ(0);
+        opacity: 1;
+    }
+    33%{
+        transform: translateY(0) rotateX(-180deg) translateZ(100px);
+        opacity: 0;
+    }
+    // sep
+    34%, 58%{
+
+    }
+    59%, 67%{
+
+    }
+    //sep
+    68%, 92%{
+
+    }
+    93%{
+        transform: translateZ(-400px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
+
+@keyframes second {
+    //sep
+    0%, 25%{
+        opacity: 0;
+    }
+    26%{
+        transform: translateZ(-400px);
+        opacity: 0;
+    }
+    33%{
+        transform: translateZ(0);
+        opacity: 1;
+    }    
+    //sep
+    34%, 58%{
+
+    }
+    59%{
+        transform: translateY(0) rotateX(0) translateZ(0);
+    }
+    62%{
+        transform: translateY(100px) rotateX(-90deg) translateZ(0);
+        opacity: 1;
+    }
+    66%{
+        transform: translateY(0) rotateX(-180deg) translateZ(100px);
+        opacity: 0;
+    }
+    // sep
+
+    67%, 100%{
+        transform: translateY(0) rotateX(0) translateZ(0);
+        opacity: 0;
+    }
+}
+
+@keyframes third {
+    // sep
+    0%, 25%{
+        opacity: 0;
+    }
+    26%, 33%{
+
+    }
+    //sep
+    34%, 59%{
+
+    }
+    60%{
+        transform: translateZ(-400px);
+        opacity: 0;
+    }
+    67%{
+        transform: translateZ(0);
+        opacity: 1;
+    }
+        //sep
+    68%, 92%{
+
+    }
+    93%{
+        transform: translateY(0) rotateX(0) translateZ(0);
+    }
+    97%{
+        transform: translateY(100px) rotateX(-90deg) translateZ(0);
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(0) rotateX(-180deg) translateZ(100px);
+        opacity: 0;
+    }
+}
+
+
+.logo{
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    width: 20vw;
+    img{
+        position: absolute;
+        top: 0;
+        left:0;
+        right:0;
+        margin: auto;
+        width: 50%;
+    }
+    .html{
+        animation: first $logo_timer linear infinite;
+    }
+    .css{
+        animation: second $logo_timer linear infinite;
+    }
+    .js{
+        animation: third $logo_timer linear infinite;
+    }
+}

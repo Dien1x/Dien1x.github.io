@@ -1,0 +1,36 @@
+/* 
+Dark Theme
+
+Neon Blue as MAIN Color
+
+White Text
+
+TimberWolf Shading
+*/
+
+$dark_theme: #1D1D1D;
+$main: #2272FF;
+$secondary: #5996FF;
+$text_color: #FFFFFF;
+$shading: #dbd7d2;
+
+/* Nav Menu */
+
+$menu_main_bck_clr: $dark_theme;
+
+$menu_item_bck_clr: $dark_theme;
+$menu_item_frnt_clr: $text_color;
+
+$menu_item_hover_bck_clr: $secondary;
+$menu_item_active_bck_clr: $main;
+
+$hamb_menu: $shading;
+
+/* Header */
+
+$header_bck_clr: $dark_theme;
+
+/* Footer */
+
+$footer_bck_clr: $dark_theme;
+$border-decor: $main;

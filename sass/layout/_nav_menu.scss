@@ -1,0 +1,199 @@
+/* Hamburger Menu */
+nav{
+    overflow: hidden;
+    .hamb-checkbox{
+        display: none;
+    }
+    ul{
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: $hamb_absolute_from_top;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.001s ease;
+    }
+    .hamb-label {
+        position: relative;
+        width: 64px;
+        float: right;
+        padding: 20px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    .hamb-line{
+        background: $hamb_menu;
+        display: block;
+        height: 2px;
+        position: absolute;
+        width: 24px;
+        transition: all 1s ease;
+
+        &.line1 {
+            top: 10px;
+        }
+        &.line2 {
+            top: 18px;
+        }
+        &.line3 {
+            top: 26px;
+        }
+    }
+
+    .hamb-checkbox:checked {
+        ~ ul{
+            visibility: visible;
+            opacity: 1;
+            transition: all 0.7s ease;
+        }
+        ~ .hamb-label {
+            .line1 {
+              transform: rotate(225deg);
+              top: 18px;
+            }
+            .line2 {
+              background-color: transparent;
+            }
+            .line3 {
+              transform: rotate(-225deg);
+              top: 18px;
+            }
+        }
+    }
+}
+
+/* Expanded Nav Menu */
+nav{
+    background-color: $menu_main_bck_clr;
+    ul{
+        list-style-type: none;
+        flex-direction: column;
+        justify-content: end;
+        width: 100%;
+        z-index: 2;
+        li{
+            display: flex;
+            padding: 0 10px;
+            justify-content: center;
+            align-items: center;
+
+            height: $item_height;
+
+            background-color: $menu_item_bck_clr;
+            color: $menu_item_frnt_clr;
+
+            border-top: 1px dashed $shading;
+
+            position: relative;
+            &:last-child{
+                border-bottom: 1px dashed $shading;
+            }
+            ul{
+                display: block;
+
+                visibility: hidden;
+
+                opacity: 0;
+    
+                position: absolute;
+                z-index: 1;
+
+                top: $item_height;
+                left: 50%;
+                transform: translateX(-50%);
+                
+                width: 150px;
+                height: 100%;
+                margin: 0 auto;
+
+                li{
+                    height: $item_height;
+                    display: flex;
+                    justify-content: center;
+                    background-color: $menu_item_bck_clr;
+                    border-radius: 15px;
+                    border: 1px solid $shading;
+                    box-shadow: 0 0 15px $shading;
+                }
+            }
+            &:hover{
+                ul{
+                    visibility: visible;
+                    opacity: 1;
+                    transition: olacity 1s ease;
+                }
+            }
+        }
+        a{
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        li:hover {
+            background-color: $menu_item_hover_bck_clr;
+        }
+        li:active {
+            background-color: $menu_item_active_bck_clr;
+        }
+    }
+    /* Disabling :active of a li item that has items in it */
+    > ul{
+        > li:first-child:active{
+            background-color: $menu_item_hover_bck_clr;
+        }
+    }
+}
+
+@media screen and (min-width: 481px) {
+    nav{
+        overflow: visible;
+        .hamb-label{
+            display: none;
+        }
+        ul{
+            visibility: visible;
+            opacity: 1;
+            position: unset;
+            width: 100vw;
+            li{
+                &:first-child{
+                    border-top: none;
+                }
+                &:last-child{
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 769px) {
+    nav{
+        height: $list_height;
+        ul{
+            flex-direction: row;  
+            justify-content: space-around;
+            height: 100%;
+            li{    
+                height: 100%;
+                width: unset;
+                border: unset;
+                &:active, &:hover {
+                    border-radius: 15px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    nav{
+        ul{
+            justify-content: flex-end;
+            width: 100%;
+        } 
+    }
+}

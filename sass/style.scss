@@ -1,0 +1,33 @@
+@use "sass:color";
+
+* {
+    box-sizing: border-box;
+}
+
+@import "base/reset";
+@import "abstracts/colors";
+@import "abstracts/fonts";
+@import "abstracts/item_sizes";
+@import "layout/header";
+@import "layout/nav_menu";
+@import "components/web_dev_logo";
+@import "layout/footer";
+@import "layout/main";
+
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    min-width: 260px;
+    main{
+        flex-grow: 1;
+    }
+    background-image: linear-gradient(white, $shading, white, 90deg);
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 1200px;
+        margin: auto;
+    }
+}

@@ -1,0 +1,84 @@
+@font-face {
+    font-family: "rubik";
+    src: url("../../fonts/rubik/Rubik-VariableFont_wght.ttf"),
+         url("../../fonts/rubik/Rubik-Italic-VariableFont_wght.ttf");
+}
+
+html{
+    font-size: 100%;
+}
+
+* {
+    font-family: rubik, sans-serif;    
+    a {
+        font-family: inherit;
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+/* Nav Font */
+
+nav{
+    a{
+        font-size: 1.4rem;
+    }
+}
+
+/* Header Font */
+
+header{
+    h2, p{
+        color: $text_color;
+
+    }
+    h2{
+        font-size: 1.4rem;
+        font-weight: 700;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    header{    
+        h2{
+            font-size: 200%;
+        }
+        p{
+            font-size: 1.125rem;
+        }
+    }
+}
+
+/* Footer Font */
+
+footer{
+    .second-column{
+        font-size: 1.2rem;
+    }
+}
+
+/* Main Font */
+
+main{
+    table{
+        color: $text_color;
+        caption{
+            font-size: 2rem;
+            padding-bottom: 20px;
+            font-weight: 700;
+        }
+        tr{
+            font-size: 1.1rem;
+
+            &:nth-child(1){
+                font-family: "Comic Sans MS", "Comic Sans", cursive;
+            }
+            &:nth-child(2){
+                font-family:'Courier New', Courier, monospace;
+            }
+            &:nth-child(3){
+                font-family: 'Aclonica', cursive;
+            }
+        }
+    }
+}
