@@ -1,0 +1,166 @@
+*{
+    box-sizing: border-box;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    --backgroundColor: rgb(0, 0, 0);
+}
+
+.sky{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--backgroundColor);
+    z-index: -1;
+}
+
+.comet{
+    width: var(--size);
+    height: var(--size);
+    position: absolute;
+    top: 100%;
+    perspective: 1000px;
+    animation: comet-movement var(--moveDuration) linear;
+}
+
+/* Comet Head Code */
+
+.comet-head{
+    position: absolute;
+    transform-style: preserve-3d;
+    width: 50%;
+    height: 50%;
+    left: 25%;
+    top: 25%;
+    transform: translateZ(calc(var(--size) * -25 / 100))
+               rotateX(45deg)
+               rotateZ(45deg); 
+    animation: cube-movement 1500ms linear infinite;               
+}
+.box{
+    position: absolute;
+    background-image: radial-gradient(rgb(0, 204, 255), rgb(0, 89, 255));
+    border: calc(var(--size) / 50) solid blue;
+    width: 100%;
+    height: 100%;
+}
+.box.front{
+    transform: translateZ(calc(var(--size) * 25 / 100));
+}
+.box.back{
+    transform: translateZ(calc(var(--size) * -25 / 100));
+}
+.box.top{
+    transform: translateY(calc(var(--size) * -25 / 100)) rotateX(90deg);
+}
+.box.bottom{
+    transform: translateY(calc(var(--size) * 25 / 100)) rotateX(-90deg);
+}
+.box.left{
+    transform: translateX(calc(var(--size) * 25 / 100)) rotateY(90deg);
+}
+.box.right{
+    transform: translateX(calc(var(--size) * -25 / 100)) rotateY(-90deg);
+}
+
+/* Comet Tail Code */
+
+.comet-tail{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    opacity: 0.5;
+}
+.arc{
+    width: 100%;
+    height: 50%;
+    background-color: rgb(2, 7, 103);
+    border-radius: calc(var(--size)/2) calc(var(--size)/2) 0 0;
+}
+.main-tail{
+    --tailSize: 1;
+    position: absolute;
+    top: calc((var(--size)/2) - 1px);
+    width: calc(var(--size) / var(--tailSize));
+    height: calc(var(--size) / var(--tailSize) * 2.3);
+    background-image: linear-gradient(rgb(2, 7, 103), rgb(50, 255, 252));
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    animation: tail-movement 1s linear infinite;
+}
+.sub1{
+    top: calc(var(--size) * 0.6);
+    right: calc(var(--size) / -8);
+    z-index: -1;
+    --tailSize: 3;
+    animation: tail-movement 1s linear 200ms infinite;
+}
+.sub2{
+    top: calc(var(--size));
+    left: calc(var(--size) / -22);
+    --tailSize: 3;
+    animation: tail-movement 1s linear 400ms infinite;
+}
+.sub3{
+    top: calc(var(--size) / 4 * 5.5);
+    right: calc(var(--size) / 12);
+    --tailSize: 3;
+    animation: tail-movement 1s linear 600ms infinite;
+}
+.sub4{
+    top: calc(var(--size) * 1.8);
+    left: calc(var(--size) / 6);
+    z-index: -1;
+    --tailSize: 3;
+    animation: tail-movement 1s linear 800ms infinite;
+}
+
+
+@keyframes tail-movement {
+    0%{
+        height: calc(var(--size) / var(--tailSize) * 2.3);
+    }
+    25%{
+        height: calc(var(--size) / var(--tailSize) * 2.7);
+    }
+    50%{
+        height: calc(var(--size) / var(--tailSize) * 2.3);
+    }
+    75%{
+        height: calc(var(--size) / var(--tailSize) * 2.7);
+    }
+    100%{
+        height: calc(var(--size) / var(--tailSize) * 2.3);
+    }
+}
+
+@keyframes cube-movement {
+    0%{
+        transform: rotateX(0) rotateY(0) rotateZ(0);
+    }
+    25%{
+        transform: rotateX(90deg) rotateZ(90deg);
+    }
+    50%{
+        transform: rotateX(180deg) rotateY() rotateZ(0);
+    }
+    75%{
+        transform: rotateX(90deg) rotateY(180deg);
+    }
+    100%{
+        transform: rotateX(0) rotateY(360deg);
+    }
+}
+
+@keyframes comet-movement {
+to{
+    transform: translateY(-250vh);
+}
+}
+
+.move{
+    transform: translateY(-150vh);
+}
