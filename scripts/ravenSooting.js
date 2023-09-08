@@ -1,8 +1,8 @@
 /** @type {HTMLCanvasElement} */
 const canvas = document.getElementById('raven');
-const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext('2d', { willReadFrequently: true });
 const collisionCanvas = document.getElementById('collisionCanvas');
-const collisionCtx = collisionCanvas.getContext('2d');
+const collisionCtx = collisionCanvas.getContext('2d', { willReadFrequently: true });
 
 let CANVAS_WIDTH = canvas.width = window.innerWidth;
 let CANVAS_HEIGHT = canvas.height = window.innerHeight;
@@ -37,7 +37,7 @@ class Raven{
     constructor(){
         this.spriteWidth = 271;
         this.spriteHeight = 194;
-        this.sizeModifier = Math.random() * 0.6 + 0.4;
+        this.sizeModifier = Math.random() * 1.5 + 0.4;
         this.width = this.spriteWidth * this.sizeModifier * CANVAS_WIDTH / 1920 ;
         this.height = this.spriteHeight * this.sizeModifier * CANVAS_WIDTH / 1920;
         this.x = CANVAS_WIDTH;
@@ -155,9 +155,9 @@ window.addEventListener('click', event => {
             explosions.push(new Explosion(raven.x, raven.y, raven.width));
             raven.markedForDeletion = true;
             score++;
-            console.log(explosions);
         }
-    })
+    });
+    console.log(clickData)
 });
 
 function animate(timestamp){
