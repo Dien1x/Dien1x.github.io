@@ -8,8 +8,9 @@ let CANVAS_WIDTH = canvas.width = window.innerWidth;
 let CANVAS_HEIGHT = canvas.height = window.innerHeight;
 let COLLISION_CANVAS_WIDTH = collisionCanvas.width = window.innerWidth;
 let COLLISION_CANVAS_HEIGHT = collisionCanvas.height = window.innerHeight;
+let fontSize = CANVAS_WIDTH / 38.4;
 
-ctx.font = '50px Impact';
+ctx.font = fontSize + 'px Impact';
 
 let timeToNextRaven = 0;
 const ravenInterval = 500;
@@ -23,7 +24,8 @@ window.addEventListener('resize', () => {
     CANVAS_HEIGHT = canvas.height = window.innerHeight;
     COLLISION_CANVAS_WIDTH = collisionCanvas.width = window.innerWidth;
     COLLISION_CANVAS_HEIGHT = collisionCanvas.height = window.innerHeight;
-    ctx.font = '50px Impact';
+    fontSize = CANVAS_WIDTH / 38.4;
+    ctx.font = fontSize + 'px Impact';
     if(gameOver) drawGameOver();
 })
 
@@ -36,11 +38,11 @@ class Raven{
         this.spriteWidth = 271;
         this.spriteHeight = 194;
         this.sizeModifier = Math.random() * 0.6 + 0.4;
-        this.width = this.spriteWidth * this.sizeModifier;
-        this.height = this.spriteHeight * this.sizeModifier;
+        this.width = this.spriteWidth * this.sizeModifier * CANVAS_WIDTH / 1920 ;
+        this.height = this.spriteHeight * this.sizeModifier * CANVAS_WIDTH / 1920;
         this.x = CANVAS_WIDTH;
         this.y = Math.random() * (CANVAS_HEIGHT - this.height);
-        this.directionX = Math.random() * 5 + 3;
+        this.directionX = Math.random() * 2 + 3;
         this.directionY = Math.random() * 5 - 2.5;       
         this.image = new Image();
         this.image.src = 'images/raven.png';
